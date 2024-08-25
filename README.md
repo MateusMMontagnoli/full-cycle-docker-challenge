@@ -10,10 +10,10 @@ Além disso, é necessário realizar o push da imagem para o Docker Hub.
 
 Foram geradas 4 imagens diferentes para as comparações de tamanhos e seus respectivos métodos para comprimir os seus tamanhos.
 
-- Sem nenhuma compressão - MB - Dockerfile - Hub:
-- Compressão com Alpine - MB - Dockerfile.alpine - Hub:
-- Compressão com Scratch - MB - Dockerfile.latest.scratch - Hub:
-- Compressão com Scratch GO 1.18 - MB - Dockerfile.scratch - Hub:
+- Sem nenhuma compressão - golang:latest - 868.88 MB - Dockerfile - Hub:
+- Compressão com Alpine - golang:latest - 9.92 MB - Dockerfile.alpine - Hub:
+- Compressão com Scratch - golang:latest - 2.12 MB - Dockerfile.latest.scratch - Hub:
+- Compressão com Scratch - golang:1.18 - 1.76 MB - Dockerfile.scratch - Hub:
 
 
 
