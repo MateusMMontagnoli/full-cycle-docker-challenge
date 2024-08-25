@@ -1,0 +1,15 @@
+FROM golang:latest AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN go build -o challenge
+
+FROM alpine:latest
+
+WORKDIR /root/
+
+COPY --from=builder /app/challenge .
+
+CMD [ "./challenge" ]
