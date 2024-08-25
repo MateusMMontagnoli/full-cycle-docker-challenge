@@ -3,7 +3,7 @@
 Repositorio criado com o intuíto da realização do desafio do módulo de Docker dentro do curso Full Cycle 3.0
 
 ## Desafio 1 - Imagem com GOLANG
-Para o desafio 1 é necessário criar uma imagem docker com golang para printar na tela a seguinte frase: Full Cycle Rocks!!.
+Para o desafio 1 é necessário criar uma imagem docker com golang, com tamanho inferior a 2 MB, para printar na tela a seguinte frase: Full Cycle Rocks!!.
 Além disso, é necessário realizar o push da imagem para o Docker Hub.
 
 ### O que foi feito
