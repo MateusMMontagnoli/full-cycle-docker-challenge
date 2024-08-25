@@ -18,8 +18,9 @@ Foram geradas 4 imagens diferentes para as comparações de tamanhos e seus resp
 
 Após a geração de todas as imagens, é possível checar o tamanhos das imagens através do docker image ls
 ```bash
-docker image ls | grep go
+docker image ls | grep <seu-filtro>
 ```
+
 Após o comando temos os tamanhos das imagens
 ```bash
 mateusmarquesmontagnoli/go-scratch-latest   latest    bfcfece0d844   5 minutes ago   2.12MB
