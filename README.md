@@ -34,4 +34,29 @@ docker run -it nome_da_imagem"
 ```
 No terminal deverá aparecer Full Cycle Rocks!!
 
+## Desafio 2 - Proxy Reverso com NGINX
+Para o desefio 2 é necessário criar uma aplicação node.js que utilize o NGINX como proxy reverso e consiga conectar-se com um banco mysql.
+A porta de conexão do NGINX será 8080 -> 80, na qual deve redirecionar para o node.js que está expondo a porta 3000.
+Ao ser requisitado, o node deve mostrar na tela os seguintes dados:
+- <h1>Full Cycle Rocks!</h1>;
+- Lista de nomes cadastrada no banco de dados.
+
+### O que foi feito
+
+Para o fluxo de redirecionamento e conexão com o banco, foi necessário colocar depências entre os containers, aonde o node é depende do db estar rodando, enquanto isso, o nginx é dependente do node para iniciar.
+
+Foram criadas duas networks entre os containers:
+| Network | Integrantes | 
+| --- | --- | 
+| node-nginx-network | node-application | 
+| node-nginx-network | nginx | 
+| node-mysql-network | node-application | 
+| node-mysql-network | nodechallengedb | 
+
+Para a utilizar o nginx como proxy reverso, foi necessário a criação do nginx.conf para configurar o encaminhamento das solicitações para o container do node
+
+Para subir os containers basta utilizar o comando abaixo: 
+```bash
+docker-compose up -d
+```
 
