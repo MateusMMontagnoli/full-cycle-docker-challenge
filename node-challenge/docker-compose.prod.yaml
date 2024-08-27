@@ -1,0 +1,53 @@
+version: '3'
+
+services: 
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    restart: always
+    container_name: nodechallengedb
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/create-tables.sql:/docker-entrypoint-initdb.d/create_table.sql
+    environment:
+      - MYSQL_DATABASE=nodechallengedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - node-mysql-network
+  
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    entrypoint: dockerize -wait tcp://node-application:3000 -timeout 60s nginx -g 'daemon off;'
+    container_name: nginx
+    restart: always
+    networks:
+      - node-nginx-network
+    ports:
+      - "8080:80"
+    depends_on:
+      - node
+
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile.prod
+    entrypoint: dockerize -wait tcp://nodechallengedb:3306 -timeout 30s docker-entrypoint.sh
+    container_name: node-application
+    networks:
+      - node-nginx-network
+      - node-mysql-network
+    tty: true
+    command: ["node", "index.js"]
+    depends_on:
+      - db
+  
+networks:
+  node-nginx-network:
+    driver: bridge
+  node-mysql-network:
+    driver: bridge

@@ -1,0 +1,6 @@
+USE nodechallengedb;
+
+CREATE TABLE IF NOT EXISTS person (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
