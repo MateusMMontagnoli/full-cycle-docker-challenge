@@ -38,7 +38,7 @@ No terminal deverá aparecer Full Cycle Rocks!!
 Para o desefio 2 é necessário criar uma aplicação node.js que utilize o NGINX como proxy reverso e consiga conectar-se com um banco mysql.
 A porta de conexão do NGINX será 8080 -> 80, na qual deve redirecionar para o node.js que está expondo a porta 3000.
 Ao ser requisitado, o node deve mostrar na tela os seguintes dados:
-- <h1>Full Cycle Rocks!</h1>;
+-  `<h1>Full Cycle Rocks</h1>`;
 - Lista de nomes cadastrada no banco de dados.
 
 ### O que foi feito
@@ -59,4 +59,5 @@ Para subir os containers basta utilizar o comando abaixo:
 ```bash
 docker-compose up -d
 ```
+Na renderização da tela foi utilizado uma view com ejs.
 
