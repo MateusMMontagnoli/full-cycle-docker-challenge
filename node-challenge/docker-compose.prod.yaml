@@ -10,8 +10,8 @@ services:
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql/create-tables.sql:/docker-entrypoint-initdb.d/create_table.sql
+      - ./sql-utils/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql-utils/create-tables.sql:/docker-entrypoint-initdb.d/create_table.sql
     environment:
       - MYSQL_DATABASE=nodechallengedb
       - MYSQL_ROOT_PASSWORD=root
